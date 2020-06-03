@@ -5,11 +5,11 @@ OPTRPT=-qopt-report=5
 default : app
 
 
-worker.o : worker.cc
+prediction.o : prediction.cc
 	${CXX} -c ${OPTRPT} ${CXXFLAGS} -o "$@" "$<"
 
-app : main.cc worker.o
-	${CXX} ${OPTRPT} ${CXXFLAGS} -o "$@" "$<" worker.o
+app : main.cc prediction.o
+	${CXX} ${OPTRPT} ${CXXFLAGS} -o "$@" "$<" prediction.o
 
 clean :
-	rm app worker.o *.optrpt
+	rm app prediction.o *.optrpt
