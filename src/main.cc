@@ -20,7 +20,7 @@ std::vector<std::string> previousDates7(std::vector<std::string> date){
   int day = std::stoi(date[1]);
   int month = std::stoi(date[0]);
   int year = std::stoi(date[2]);
-  #pragma omp paralell for
+  #pragma omp parallel for
   for(int i = 0; i < 7; i++){
     day--;
     if(day == 0){
@@ -50,7 +50,7 @@ std::vector<std::string> previousDates14(std::vector<std::string> date){
   int day = std::stoi(date[1]);
   int month = std::stoi(date[0]);
   int year = std::stoi(date[2]) - 1;
-  #pragma omp paralell for
+  #pragma omp parallel for
   for(int i = 0; i < 14; i++){
     day--;
     if(day == 0){
@@ -128,7 +128,7 @@ std::vector<std::string> readFechas(std::string file_name){
 int main(int argc, char** argv) {
   auto start = std::chrono::system_clock::now();
   std::vector<std::string> fechas = readFechas("../data/sample.csv");
-  #pragma omp paralell for
+  #pragma omp parallel for
   for(int k = 0; k < fechas.size(); k++){
     std::vector<std::string> date = split(fechas[k], '/');
     std::vector<std::string> date7 = previousDates7(date);
