@@ -7,6 +7,7 @@
 #include <sstream>
 #include <chrono>
 #include <ctime>
+#include <omp.h>
 #include "prediction.h"
 
 std::vector<float> readFile(std::string file_name, std::string actual_date);
