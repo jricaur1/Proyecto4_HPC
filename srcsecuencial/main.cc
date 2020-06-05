@@ -144,6 +144,8 @@ int main(int argc, char** argv) {
     std::vector<std::vector<float>> vcd = varianza(sw);
     std::vector<float> mvrz = mediaVarianza(vcd, vsw);
     std::vector<float> aprox = aproximacion(actualD, mvrz);
+    std::cout << "En la fecha " << fechas[k] << " la precipitación fue: " << aprox[0]<<  ", la temperatura mínima fue: " << aprox[1] << 
+    ", temperatura máxima fue: " << aprox[2] << " y la temperatura observada fue: " << aprox[3] << std::endl;
 
   }
   auto end = std::chrono::system_clock::now();
