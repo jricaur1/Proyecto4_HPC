@@ -14,6 +14,7 @@ std::vector<std::string> split(std::string s, char delim);
 std::vector<std::string> previousDates7(std::vector<std::string> date);
 std::vector<std::string> previousDates14(std::vector<std::string> date);
 
+#pragma opm paralell
 std::vector<std::string> previousDates7(std::vector<std::string> date){
   std::vector<std::string> date7;
   int day = std::stoi(date[1]);
@@ -43,6 +44,7 @@ std::vector<std::string> previousDates7(std::vector<std::string> date){
   return date7;
 }
 
+#pragma opm paralell
 std::vector<std::string> previousDates14(std::vector<std::string> date){
   std::vector<std::string> date14;
   int day = std::stoi(date[1]);
@@ -73,6 +75,7 @@ std::vector<std::string> previousDates14(std::vector<std::string> date){
   return date14;
 }
 
+#pragma opm paralell
 std::vector<std::string> split(std::string s, char delim) {
         std::stringstream ss(s);
         std::string item;
@@ -83,6 +86,7 @@ std::vector<std::string> split(std::string s, char delim) {
         return tokens;
     }
 
+#pragma opm paralell
 std::vector<float> readFile(std::string file_name, std::string actual_date){
   std::vector<float> record;
   std::ifstream file;
@@ -111,6 +115,8 @@ std::vector<float> readFile(std::string file_name, std::string actual_date){
   }
   return record;
 }
+
+#pragma opm paralell
 std::vector<std::string> readFechas(std::string file_name){
   std::vector<std::string> fechas;
   std::ifstream file;
@@ -122,9 +128,11 @@ std::vector<std::string> readFechas(std::string file_name){
   return fechas;
 }
 
+#pragma opm paralell
 int main(int argc, char** argv) {
   auto start = std::chrono::system_clock::now();
   std::vector<std::string> fechas = readFechas("../data/sample.csv");
+  #pragma omp paralell for
   for(int k = 0; k < fechas.size(); k++){
     std::vector<std::string> date = split(fechas[k], '/');
     std::vector<std::string> date7 = previousDates7(date);
@@ -132,7 +140,6 @@ int main(int argc, char** argv) {
     std::vector<std::vector<float>> cd;
     std::vector<std::vector<float>> pd;
     std::vector<float> actualD = readFile("../data/2169646.csv", "1/3/2019");
-
     for(int i = 0; i < 7; i++){
     std::vector<float> s = readFile("../data/2169646.csv", date7[i]);
       cd.push_back(s);
