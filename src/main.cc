@@ -15,12 +15,12 @@ std::vector<std::string> split(std::string s, char delim);
 std::vector<std::string> previousDates7(std::vector<std::string> date);
 std::vector<std::string> previousDates14(std::vector<std::string> date);
 
-#pragma omp parallel
 std::vector<std::string> previousDates7(std::vector<std::string> date){
   std::vector<std::string> date7;
   int day = std::stoi(date[1]);
   int month = std::stoi(date[0]);
   int year = std::stoi(date[2]);
+  #pragma omp paralell for
   for(int i = 0; i < 7; i++){
     day--;
     if(day == 0){
@@ -45,13 +45,12 @@ std::vector<std::string> previousDates7(std::vector<std::string> date){
   return date7;
 }
 
-#pragma omp parallel
 std::vector<std::string> previousDates14(std::vector<std::string> date){
   std::vector<std::string> date14;
   int day = std::stoi(date[1]);
   int month = std::stoi(date[0]);
   int year = std::stoi(date[2]) - 1;
-
+  #pragma omp paralell for
   for(int i = 0; i < 14; i++){
     day--;
     if(day == 0){
@@ -76,7 +75,6 @@ std::vector<std::string> previousDates14(std::vector<std::string> date){
   return date14;
 }
 
-#pragma omp parallel
 std::vector<std::string> split(std::string s, char delim) {
         std::stringstream ss(s);
         std::string item;
@@ -87,7 +85,6 @@ std::vector<std::string> split(std::string s, char delim) {
         return tokens;
     }
 
-#pragma omp parallel
 std::vector<float> readFile(std::string file_name, std::string actual_date){
   std::vector<float> record;
   std::ifstream file;
@@ -117,7 +114,6 @@ std::vector<float> readFile(std::string file_name, std::string actual_date){
   return record;
 }
 
-#pragma omp parallel
 std::vector<std::string> readFechas(std::string file_name){
   std::vector<std::string> fechas;
   std::ifstream file;
@@ -129,7 +125,6 @@ std::vector<std::string> readFechas(std::string file_name){
   return fechas;
 }
 
-#pragma omp parallel
 int main(int argc, char** argv) {
   auto start = std::chrono::system_clock::now();
   std::vector<std::string> fechas = readFechas("../data/sample.csv");
