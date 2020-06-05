@@ -45,6 +45,6 @@ La comunicación entre procesos ejecutados la realiza OpenMP de forma transparen
 
 La aglomeración de datos es realizada a través de matrices después del proceso de Sliding window. En este, gracias a los vectores, contamos con varias matrices resultantes de las Sliding windows y tenemos que empezar a computar las predicciones. Este proceso se hace cuando encontramos la distancia euclideana, la varianza, la media varianza y la aproximación.
 
-## Mapping 
+## Mapping  
 
 Dado que solo hacemos uso de OpemMP y no usamos OpenMPI, el mapping lo maneja OpenMP y esto se puede ver evidenciado en el reporte de salida ipo_out.optrpt.
