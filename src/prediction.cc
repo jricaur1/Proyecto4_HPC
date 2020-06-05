@@ -27,6 +27,7 @@ std::vector<std::vector<float>> euclideanDistance(std::vector<std::vector<float>
     }
     
   }
+  #pragma omp critical
   for(int i = index; i < cd.size() + index; i++){
     w.push_back(pd[i]);
   }
@@ -39,6 +40,7 @@ std::vector<std::vector<float>> varianza(std::vector<std::vector<float>> diff){
   #pragma omp for
   for (int i = 0; i < diff.size() - 1; i++){
     std::vector<float> temp;
+    #pragma omp critical
     for (int j = 0; j < diff[i].size(); j++){
       float f = fabs(diff[i + 1][j] - diff[i][j]);
       temp.push_back(f);
@@ -72,7 +74,7 @@ std::vector<float> mediaVarianza(std::vector<std::vector<float>> cdv, std::vecto
 
 std::vector<float> aproximacion(std::vector<float> diaA, std::vector<float> mediaV) {
   std::vector<float> aprox;
-  #pragma omp for
+  #pragma omp critical
   for(int i = 0; i < diaA.size(); i++){
     float aux = mediaV[i] + diaA[i];
     aprox.push_back(aux);

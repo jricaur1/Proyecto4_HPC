@@ -104,7 +104,7 @@ std::vector<float> readFile(std::string file_name, std::string actual_date){
     getline(file, field_five, '\n');
     if(field_one == actual_date){
       record_found = true;
-      // record.push_back(field_one);
+      #pragma omp critical
       record.push_back(std::stof(field_two));
       record.push_back(std::stof(field_three));
       record.push_back(std::stof(field_four));
@@ -120,6 +120,7 @@ std::vector<std::string> readFechas(std::string file_name){
   file.open(file_name);
   std::string fecha;
   while(getline(file, fecha, '\n')){
+    #pragma omp critical
     fechas.push_back(fecha);
   }
   return fechas;
@@ -136,10 +137,12 @@ int main(int argc, char** argv) {
     std::vector<std::vector<float>> cd;
     std::vector<std::vector<float>> pd;
     std::vector<float> actualD = readFile("../data/2169646.csv", "1/3/2019");
+    #pragma omp critical
     for(int i = 0; i < 7; i++){
     std::vector<float> s = readFile("../data/2169646.csv", date7[i]);
       cd.push_back(s);
-    }  
+    }
+    #pragma omp critical  
     for(int i = 0; i < 14; i++){
       std::vector<float> s = readFile("../data/2169646.csv", date14[i]);
       pd.push_back(s);
