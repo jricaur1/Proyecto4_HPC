@@ -41,7 +41,10 @@ Los datos a analizar se segmentan en cada una de las funciones a través de los 
 
 La comunicación entre procesos ejecutados la realiza OpenMP de forma transparente haciendo uso de hilos. Dado que todos los datos se encuentran en memoria compartida, se puede acceder con facilidad a los datos, a menos que se requiera un proceso de escritura pues en estos casos se ejecuta un Mutex para garantizar una gestión sincrónica de los datos. En este caso no fue posible finalizar la implementación haciendo uso de MPI para el paso de mensajes.
 
-## Aglomeracion
+## Aglomeración
+
+La aglomeración de datos es realizada a través de matrices después del proceso de Sliding window. En este, gracias a los vectores, contamos con varias matrices resultantes de las Sliding windows y tenemos que empezar a computar las predicciones. Este proceso se hace cuando encontramos la distancia euclideana, la varianza, la media varianza y la aproximación.
 
 ## Mapping 
 
+Dado que solo hacemos uso de OpemMP y no usamos OpenMPI, el mapping lo maneja OpenMP y esto se puede ver evidenciado en el reporte de salida ipo_out.optrpt.
