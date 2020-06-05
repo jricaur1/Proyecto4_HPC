@@ -6,7 +6,7 @@
 #include <iostream>
 #include <omp.h>
 
-#pragma omp paralell
+#pragma omp parallel
 std::vector<std::vector<float>> euclideanDistance(std::vector<std::vector<float>> &cd, std::vector<std::vector<float>> &pd) {
   float dst = 99999.9f;
   int index = 0;
@@ -33,7 +33,7 @@ std::vector<std::vector<float>> euclideanDistance(std::vector<std::vector<float>
   return w;
 }
 
-#pragma omp paralell
+#pragma omp parallel
 std::vector<std::vector<float>> varianza(std::vector<std::vector<float>> diff){
   std::vector<std::vector<float>> dfv; // difference vectors
   #pragma omp for
@@ -49,7 +49,7 @@ std::vector<std::vector<float>> varianza(std::vector<std::vector<float>> diff){
   return dfv;
 }
 
-#pragma omp paralell
+#pragma omp parallel
 std::vector<float> mediaVarianza(std::vector<std::vector<float>> cdv, std::vector<std::vector<float>> pdv){
   std::vector<float> dfv; // difference vectors
   float meanc = 0.0f;
@@ -69,7 +69,7 @@ std::vector<float> mediaVarianza(std::vector<std::vector<float>> cdv, std::vecto
   return dfv;
 }
 
-#pragma omp paralell
+#pragma omp parallel
 std::vector<float> aproximacion(std::vector<float> diaA, std::vector<float> mediaV) {
   std::vector<float> aprox;
   for(int i = 0; i < diaA.size(); i++){
