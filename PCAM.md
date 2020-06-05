@@ -43,5 +43,5 @@ La comunicación entre procesos ejecutados la realiza OpenMP de forma transparen
 
 ## Aglomeracion
 
-## Mapping 
+## Mapping  
 
