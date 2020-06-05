@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <chrono>
+#include <ctime>
 #include "prediction.h"
 
 std::vector<float> readFile(std::string file_name, std::string actual_date);
@@ -109,36 +111,48 @@ std::vector<float> readFile(std::string file_name, std::string actual_date){
   }
   return record;
 }
+std::vector<std::string> readFechas(std::string file_name){
+  std::vector<std::string> fechas;
+  std::ifstream file;
+  file.open(file_name);
+  std::string fecha;
+  while(getline(file, fecha, '\n')){
+    fechas.push_back(fecha);
+  }
+  return fechas;
+}
 
 int main(int argc, char** argv) {
-  std::vector<std::string> date = split("1/3/2019", '/');
-  std::vector<std::string> date7 = previousDates7(date);
-  std::vector<std::string> date14 = previousDates14(date);
-  std::vector<std::vector<float>> cd;
-  std::vector<std::vector<float>> pd;
-  std::vector<float> actualD = readFile("../data/2169646.csv", "1/3/2019");
+  auto start = std::chrono::system_clock::now();
+  std::vector<std::string> fechas = readFechas("../data/sample.csv");
+  for(int k = 0; k < fechas.size(); k++){
+    std::vector<std::string> date = split(fechas[k], '/');
+    std::vector<std::string> date7 = previousDates7(date);
+    std::vector<std::string> date14 = previousDates14(date);
+    std::vector<std::vector<float>> cd;
+    std::vector<std::vector<float>> pd;
+    std::vector<float> actualD = readFile("../data/2169646.csv", "1/3/2019");
 
-  for(int i = 0; i < 7; i++){
-   std::vector<float> s = readFile("../data/2169646.csv", date7[i]);
-    cd.push_back(s);
-    // std::cout << cd[i][0];
-  }  
-  for(int i = 0; i < 14; i++){
-    std::vector<float> s = readFile("../data/2169646.csv", date14[i]);
-    pd.push_back(s);
-    // std::cout << pd[i][0];
-  } 
-  std::vector<std::vector<float>> sw  = euclideanDistance(cd, pd);
-  std::vector<std::vector<float>> vsw = varianza(cd);
-  std::vector<std::vector<float>> vcd = varianza(sw);
-  std::vector<float> mvrz = mediaVarianza(vcd, vsw);
-  std::vector<float> aprox = aproximacion(actualD, mvrz);
+    for(int i = 0; i < 7; i++){
+    std::vector<float> s = readFile("../data/2169646.csv", date7[i]);
+      cd.push_back(s);
+    }  
+    for(int i = 0; i < 14; i++){
+      std::vector<float> s = readFile("../data/2169646.csv", date14[i]);
+      pd.push_back(s);
+    } 
+    std::vector<std::vector<float>> sw  = euclideanDistance(cd, pd);
+    std::vector<std::vector<float>> vsw = varianza(cd);
+    std::vector<std::vector<float>> vcd = varianza(sw);
+    std::vector<float> mvrz = mediaVarianza(vcd, vsw);
+    std::vector<float> aprox = aproximacion(actualD, mvrz);
 
-  for(int i = 0; i < aprox.size(); i++){
-    // for(int j = 0; j < vsw[i].size(); j++){
-    //   std::cout << vsw[i][j] << " " << vcd[i][j] << " ";
-    // }
-     std::cout << aprox[i] << std::endl;
   }
+  auto end = std::chrono::system_clock::now();
+  std::chrono::duration<double> elapsed_seconds = end-start;
+  std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+  std::cout << "Computo finalizada en " << std::ctime(&end_time)
+            << "tiempo de ejecución: " << elapsed_seconds.count() << "s\n";
   return 0;
 }
