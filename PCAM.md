@@ -6,11 +6,8 @@ Existen múltiples acercamientos a la problemática del clima dentro de la compu
 
 En este caso, se implementará una solución que haga uso de un modelo estadístico que considere las condiciones climáticas de la semana anterior, además de las de las 2 semanas anteriores, a través de un algoritmo de ventana deslizante, que permitirá determinar las fechas que más se acerquen al comportamiento de los componentes del clima a analizar de la semana actual.
 
-// sliding window
 
 Las fechas más cercanas pueden encontrarse a través de una diferencia euclidiana entre los componentes a considerar dentro del modelo determinado. 
-
-// euclidean model
 
 Al encontrar este valor, se puede determinar cuál matriz dentro de las ventanas, tiene el mayor acercamiento a la matriz actual, que denominaremos CD. 
 
