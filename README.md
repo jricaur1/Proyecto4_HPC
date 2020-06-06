@@ -57,13 +57,23 @@ Para iniciar (sea en la carpeta del algoritmo secuencial o paralelo) debemos hac
 
 ### Referencias
 https://www.worldcommunitygrid.org/discover.action
+
 https://www.worldscientific.com/doi/abs/10.1142/S0129053393000049
+
 https://doi.org/10.1155/2020/814837
+
 https://www.mpi-forum.org/ 
+
 https://www.openmp.org/ 
-https://scijinks.gov/forecast-reliability/#:~:text=A%20seven%2Dday%20forecast%20can,90%20percent%20of%20the%20time.&text=Since%20we%20can't%20collect,assumptions%20to%20predict%20future%20weather.
+
+https://scijinks.gov/forecast-reliability/#:~:text=A%20seven%2Dday%20forecast%20can,90%20percent%20of%20the%20time.&text=Since%20we%20can't%20collect,assumptions%20to%20predict%20future%20weather
+
 https://www.ncdc.noaa.gov/ 
+
 https://www.hindawi.com/journals/isrn/2013/156540/
+
 https://ieeexplore.ieee.org/abstract/document/1384579
+
 https://www.researchgate.net/profile/Zuraidi_Saad/publication/221258399_Weather_Forecasting_Using_Photovoltaic_System_and_Neural_Network/links/57037ea608aea09bb1a3d96d/Weather-Forecasting-Using-Photovoltaic-System-and-Neural-Network.pdf
+
 https://www.sciencedirect.com/science/article/abs/pii/0165011488901236
