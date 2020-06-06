@@ -59,6 +59,9 @@ Para iniciar (sea en la carpeta del algoritmo secuencial o paralelo) debemos hac
 Evidenciamos la diferenca de ejecución entre ambos algoritmos con la siguiente imagen:
 ![](img/Performance.png)
 
+### Observación
+A pesar de que el repositorio muestra que mayormente los commits fueron hechos por jricaur1 vale la pena aclarar que el código fue trabajado haciendo uso de la extensión liveshare de Visual Studio Code, en el cual ambos integrantes del equipo participamos.
+
 ### Referencias
 https://www.worldcommunitygrid.org/discover.action
 
