@@ -55,6 +55,13 @@ Dado que solo hacemos uso de OpemMP y no usamos OpenMPI, el mapping lo maneja Op
 ### Desarrollo
 Para iniciar (sea en la carpeta del algoritmo secuencial o paralelo) debemos hacer el comando make, así generamos los reportes de salida. Luego debemos hacer el comando qsub appjob, esto pondrá nuestro proceso en cola. Para finalizar podemos ver nuestros resultado en el archivo appjob.o<id del job> y comprobamos los resultados.
 
+### Evidencia Performance
+Evidenciamos la diferenca de ejecución entre ambos algoritmos con la siguiente imagen:
+![](img/Performance.png)
+
+### Observación
+A pesar de que el repositorio muestra que mayormente los commits fueron hechos por jricaur1 vale la pena aclarar que el código fue trabajado haciendo uso de la extensión liveshare de Visual Studio Code, en el cual ambos integrantes del equipo participamos.
+
 ### Referencias
 https://www.worldcommunitygrid.org/discover.action
 
