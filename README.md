@@ -57,7 +57,7 @@ Para iniciar (sea en la carpeta del algoritmo secuencial o paralelo) debemos hac
 
 ### Evidencia Performance
 Evidenciamos la diferenca de ejecución entre ambos algoritmos con la siguiente imagen:
-![](img/Performance.jpg)
+![](img/Performance.png)
 
 ### Referencias
 https://www.worldcommunitygrid.org/discover.action
